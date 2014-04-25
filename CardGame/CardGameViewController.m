@@ -8,89 +8,79 @@
 
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
-    @property (nonatomic) int flipCount;
-    @property (weak, nonatomic) IBOutlet UILabel    *gameIndicator;
-    @property (weak, nonatomic) IBOutlet UILabel    *flipsLabel;
-    @property (nonatomic, strong) Deck *deck;
+    @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+    @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+    @property (strong, nonatomic) CardMatchingGame *game;
 @end
 
 
 @implementation CardGameViewController
 
-// setter of flipCount property, also sets text to flipsLabel
-- (void)setFlipCount:(int)flipCount{
+// lazy init
+- (CardMatchingGame *)game{
     
-    _flipCount = flipCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+    // if game is nil then we init the game with the size equals to the size of cards in view
+    // and using the deck created in PlayingCardDeck implementation
+    if(!_game)
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                  usingDeck:[[PlayingCardDeck alloc] init]];
     
-}
-
-- (Deck *)deck{
-    
-    if( !_deck )
-        _deck = [[PlayingCardDeck alloc] init];
-    return _deck;
+    return _game;
     
 }
-
 
 // action that flips the card in the view
 - (IBAction)touchCardButton:(UIButton *)sender {
 
-    // if we dont have more cards we prompt a msg
-    if( ![self.deck.cards count] ){
-     
-        // set the back of the card and disable the button
-        UIImage *cardImage = [UIImage imageNamed:@"cardBack"];
-        [sender setBackgroundImage:cardImage forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-        [sender setEnabled:NO];
-        
-        // inidcate user that we don't have more cards
-        self.gameIndicator.text = @"Sorry, no more cards 😴";
-        self.gameIndicator.textColor = [UIColor redColor];
-        
-    }else{
-    
-        // show back if we dont have title
-        if( [sender.currentTitle length] ){
-            
-            UIImage *cardImage = [UIImage imageNamed:@"cardBack"];
-            [sender setBackgroundImage:cardImage forState:UIControlStateNormal];
-            [sender setTitle:@"" forState:UIControlStateNormal];
-            
-        }else{
-        
-            // search random card
-            Card* randomCard = [self.deck drawRandomCard];
-            // set front image and title from the randomCard
-            UIImage *cardImage = [UIImage imageNamed:@"cardFront"];
-            [sender setBackgroundImage:cardImage forState:UIControlStateNormal];
-            [sender setTitle:[randomCard contents] forState:UIControlStateNormal];
-            
-        }
-    
-        // increase count
-        self.flipCount++;
-        
-        // message for users - just playing
-        if( self.flipCount > 20 && self.flipCount <= 40 ){
+    // search for the button in the collection of buttons
+    int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    // choose that card inside my game's model
+    [self.game chooseCardAtIndex:chosenButtonIndex];
+    // let the UI know about these selections
+    [self updateUI];
+  
+}
 
-            [self.gameIndicator setText:[NSString stringWithFormat:@"Nommmbre, did you like it?"]];
-            [self.gameIndicator setTextColor:[UIColor yellowColor]];
-
-        }else if( self.flipCount > 40 ){
+- (void) updateUI{
+    
+    // go through all the buttons in the UI
+    for(UIButton *button in self.cardButtons){
         
-            self.gameIndicator.text = @"OK ok ok, is not a toy 😌";
-            self.gameIndicator.textColor = [UIColor redColor];
+        // search for index in the array of ui buttons
+        int buttonIndex = [self.cardButtons indexOfObject:button];
+        // search for the card associated to the button
+        Card *card = [self.game cardAtIndex:buttonIndex];
         
-        }
+        // set title, image and enable state for all the images every time that the action is triggered
+        [button setTitle:[self titleForCard:card] forState:UIControlStateNormal]; // same as button.title
+        [button setBackgroundImage:[self imageForCard:card] forState:UIControlStateNormal]; // same as button.image
+        [button setEnabled:!card.matched]; // same as button.enabled
+        
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
         
     }
-  
     
+    // To win
+    if(self.game.score > 20){
+        self.scoreLabel.text      = [NSString stringWithFormat:@"You reach the score %d !!!", self.game.score];
+        self.scoreLabel.textColor = [UIColor redColor];
+        for(UIButton *button in self.cardButtons)
+            button.enabled = false;
+    }
 }
+
+// if the card is chosen then we show the conent, if not, just show the back of the card
+- (NSString *) titleForCard:(Card *)card{
+    return card.chosen ? card.contents : @"";
+}
+
+// if the card is chosen then we show the front, else we show the back
+- (UIImage *) imageForCard:(Card *)card{
+    return [UIImage imageNamed: card.chosen ? @"cardFront" : @"cardBack"];
+}
+
 
 @end

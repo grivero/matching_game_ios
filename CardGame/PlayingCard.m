@@ -13,6 +13,24 @@
 // cause we provide setter and getter
 @synthesize suit = _suit;
 
+// suscribing the match method from Card
+- (int) match:(NSArray *)otherCards{
+    
+    // init aux score
+    int score = 0;
+    // get the first card
+    PlayingCard* card = [otherCards firstObject];
+    
+    // if rank match, we give 4 points
+    if( card.rank == self.rank )
+        score += 4;
+    // if suit match, we give 1 additional point
+    if ([card.suit isEqualToString:self.suit])
+        score += 1;
+    
+    return score;
+    
+}
 
 // setter of suit property
 - (void) setSuit:(NSString *)suit{
