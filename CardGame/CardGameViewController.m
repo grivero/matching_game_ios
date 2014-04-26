@@ -15,7 +15,7 @@
     @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
     @property (weak, nonatomic) IBOutlet UILabel *actionLabel;
     @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-    @property (strong, nonatomic) NSArray *actionList;
+    @property (strong, nonatomic) NSMutableArray *actionList;
     @property (strong, nonatomic) CardMatchingGame *game;
 @end
 
@@ -33,6 +33,12 @@
     
     return _game;
     
+}
+
+- (NSMutableArray *)actionList{
+    if( !_actionList )
+        _actionList = [[NSMutableArray alloc] init];
+    return _actionList;
 }
 
 // action that restart the game
@@ -73,17 +79,25 @@
         [button setBackgroundImage:[self imageForCard:card] forState:UIControlStateNormal]; // same as button.image
         [button setEnabled:!card.matched]; // same as button.enabled
         
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
-//        self.scoreLabel.font = [UIFont preferredFontForTextStyle:<#(NSString *)#>];
-        
     }
     
+    // set labels
+    self.scoreLabel.text  = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.actionLabel.text = self.game.actionString;
+    
+    // add the action into the history array
+    if( self.game.actionString && ![self.actionList containsObject:self.game.actionString] )
+        [self.actionList insertObject:self.game.actionString atIndex:0];
+    
+    
+    
+    // interact with user
     [self printMessages];
     
     // To win
-    if(self.game.score > 20){
+    if(self.game.score >= 20){
         
-        self.scoreLabel.text      = [NSString stringWithFormat:@"You reach the score %d !!!", self.game.score];
+        self.scoreLabel.text      = [NSString stringWithFormat:@"You reach %d!", self.game.score];
         self.scoreLabel.textColor = [UIColor redColor];
         self.titleLabel.text      = @"You win! 👍 ";
         self.titleLabel.textColor = [UIColor redColor];
@@ -104,6 +118,9 @@
     
     self.scoreLabel.textColor = [UIColor blackColor];
     self.titleLabel.textColor = [UIColor blackColor];
+    
+    self.actionList = [[NSMutableArray alloc] init];
+    self.actionLabel.text = @"";
     
     // go through all the buttons in the UI
     for(UIButton *button in self.cardButtons){

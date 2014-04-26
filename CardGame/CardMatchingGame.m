@@ -10,6 +10,7 @@
 
 @interface CardMatchingGame()
     @property (nonatomic, readwrite) NSInteger score;
+    @property (nonatomic, readwrite) NSString *actionString;
     @property (nonatomic, strong) NSMutableArray *cards;// of Cards
 @end
 
@@ -58,6 +59,10 @@ static const int COST_TO_CHOSE      = 1;
 }
 
 - (void) chooseCardAtIndex:(NSUInteger)index{
+    //
+    // cambiar tipo de retorno, devolver las 2 cartas que matchearon o algo inteligente para que esto camine.. de lo contrario nil
+    // agregar variable al mensaje para que se pueda matchear de mas de 2 cartas
+    //
     
     // choose the card at index
     Card *card = [self cardAtIndex:index];
@@ -82,12 +87,26 @@ static const int COST_TO_CHOSE      = 1;
                     
                     // if matchScore > 0
                     if(matchScore){
-                        self.score          += matchScore * MATCH_BONUS;
+                        self.score          += (matchScore * MATCH_BONUS);
                         otherCard.matched   = YES;
                         card.matched        = YES;
+                        
+                        [self setActionString:self.actionString
+                                     withCard:card
+                                      andCard:otherCard
+                                    isMatched:YES
+                                        score:(matchScore * MATCH_BONUS)];
+                        
                     }else{
                         self.score          -= MISMATCH_PENALTY;
                         otherCard.chosen    = NO;
+                        
+                        [self setActionString:self.actionString
+                                     withCard:card
+                                      andCard:otherCard
+                                    isMatched:NO
+                                        score:MISMATCH_PENALTY];
+
                     }
                     break; // can only choose 2 cards for now
                     
@@ -103,6 +122,18 @@ static const int COST_TO_CHOSE      = 1;
         
     }
             
+}
+
+- (void) setActionString:(NSString *)actionString withCard:(Card*)card andCard:(Card*)otherCard isMatched:(BOOL)matched score:(NSInteger)score{
+    
+    NSString* cardContent       = [card contents];
+    NSString* otherCardConent   = [otherCard contents];
+    
+    if( matched )
+        self.actionString = [NSString stringWithFormat:@"Matched %@ and %@ for %d point%@",cardContent, otherCardConent, score, (score>1) ? @"s" : @""];
+    else
+        self.actionString = [NSString stringWithFormat:@"%@ and %@ don't match! %d points penalty!",cardContent, otherCardConent, score];
+    
 }
 
 @end
