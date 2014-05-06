@@ -29,9 +29,15 @@
     // and using the deck created in PlayingCardDeck implementation
     if(!_game)
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+                                                  usingDeck:[self createDeck]];
     
     return _game;
+    
+}
+
+- (Deck *)createDeck{
+    
+    return [[PlayingCardDeck alloc] init];
     
 }
 

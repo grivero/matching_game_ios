@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B70F0071-6E75-4AA2-84F4-29A54E6BAA28</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CardGame</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>76D4273D-F05B-4D19-A020-70F885FD98B2</key>
+		<string>https://github.com/grivero/matching_game_ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CardGame.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>76D4273D-F05B-4D19-A020-70F885FD98B2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/grivero/matching_game_ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>76D4273D-F05B-4D19-A020-70F885FD98B2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>76D4273D-F05B-4D19-A020-70F885FD98B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Development</string>
+		</dict>
+	</array>
+</dict>
+</plist>
