@@ -7,6 +7,8 @@
 //
 
 #import "InitViewController.h"
+#import "CardGameViewController.h"
+#import "ScoresTableViewController.h"
 
 @interface InitViewController ()
 
@@ -23,7 +25,6 @@
     [self.playButton setEnabled:([self.nameInputText.text length]>=3)];
     
 }
-
 
 - (void) viewDidLoad{
     
@@ -70,10 +71,26 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
+    // save data to use after
     [self saveFromUI];
     
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // prepare Let's Play button segue
+    if( [segue.identifier isEqualToString:@"startGame"] &&
+        [segue.destinationViewController isKindOfClass:[CardGameViewController class]] ){
+        
+            CardGameViewController *cardGameController = (CardGameViewController *) segue.destinationViewController;
+            cardGameController.currentUserName = self.nameInputText.text;
+            cardGameController.isThreeCardGame = [self.threeCardsSwitchButton isOn];
+        
+    // prepare Scores button segue
+    }else if([segue.identifier isEqualToString:@"getScores"]){
+    /**
+        if([segue.destinationViewController isKindOfClass:[ScoresTableViewController class]]){
+            ScoresTableViewController *tableController = (ScoresTableViewController *) segue.destinationViewController;
+        }**/
+        
+    }
+    
 }
 
 

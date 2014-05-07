@@ -23,6 +23,33 @@
 
 @implementation CardGameViewController
 
+- (void) setCurrentUserName:(NSString *)currentUserName{
+    
+    // set name
+    _currentUserName = currentUserName;
+    
+    // if we are in the window, need to update UI
+    if( self.view.window )
+        [self updateUI];
+    
+}
+
+- (void) setIsThreeCardGame:(BOOL)isThreeCardGame{
+    
+    _isThreeCardGame = isThreeCardGame;
+    if( self.view.window )
+        [self updateUI];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    // because i passed the name via segue i need to update UI after the Outlets are set
+    [self updateUI];
+    
+}
+
 // lazy init
 - (CardMatchingGame *)game{
     
@@ -73,6 +100,9 @@
 
 - (void) updateUI{
     
+    // set title with the current user name
+    self.navigationItem.title = [NSString stringWithFormat:@"%@ let's play", self.currentUserName];
+    
     // go through all the buttons in the UI
     for(UIButton *button in self.cardButtons){
         
@@ -101,6 +131,16 @@
         
         self.scoreLabel.text      = [NSString stringWithFormat:@"You reach %d!", self.game.score];
         self.scoreLabel.textColor = [UIColor redColor];
+        
+        /**
+         
+         guardar la data en memoria
+         ver en que posicion quede
+         talvez podria cambiar el titulo y ponerle algo como "haz quedado en 4to puesto"
+         
+         
+         **/
+        
         
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You win"
                                                         message:[NSString stringWithFormat: @"You reach %d!", self.game.score]

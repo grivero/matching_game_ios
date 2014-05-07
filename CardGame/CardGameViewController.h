@@ -11,6 +11,9 @@
 
 @interface CardGameViewController : UIViewController
 
+    @property (strong, nonatomic)   NSString*   currentUserName;
+    @property (nonatomic)           BOOL        isThreeCardGame;
+
     // abstract
     - (Deck *)createDeck;
 
