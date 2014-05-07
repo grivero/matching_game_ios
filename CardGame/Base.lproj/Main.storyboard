@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yPP-5V-62H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yPP-5V-62H">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -28,10 +28,42 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="High Scores" id="aeE-eP-POn"/>
+                    <connections>
+                        <segue destination="ZGF-5k-3L2" kind="push" identifier="watchMoves" id="H9r-1x-nW9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEz-Ga-K8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957" y="-328"/>
+        </scene>
+        <!--Moves Table View Controller - Game moves-->
+        <scene sceneID="558-AM-t1h">
+            <objects>
+                <tableViewController id="ZGF-5k-3L2" customClass="MovesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZhT-Nl-oR9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="84p-Zf-MIZ">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="84p-Zf-MIZ" id="uxg-9B-fTk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZGF-5k-3L2" id="7eC-UY-hub"/>
+                            <outlet property="delegate" destination="ZGF-5k-3L2" id="cSQ-hJ-qH0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Game moves" id="03c-cd-VdP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5t-CN-Noa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2415" y="-328"/>
         </scene>
         <!--Card Game View Controller - Game Started-->
         <scene sceneID="ufC-wZ-h7g">
@@ -449,7 +481,7 @@
             </objects>
             <point key="canvasLocation" x="1957" y="366"/>
         </scene>
-        <!--Init View Controller - Card Games-->
+        <!--Init View Controller - iOS Workshop-->
         <scene sceneID="DMH-Ho-g5t">
             <objects>
                 <viewController id="SxN-Sy-4Jn" customClass="InitViewController" sceneMemberID="viewController">
@@ -461,7 +493,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAF-ZE-Us0">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAF-ZE-Us0">
                                 <rect key="frame" x="113" y="430" width="95" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Let's Play!" backgroundImage="redButton">
@@ -488,6 +520,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="SxN-Sy-4Jn" id="C0f-gt-jcE"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxX-j9-Icm">
                                 <rect key="frame" x="26" y="208" width="51" height="21"/>
@@ -498,13 +533,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Card Games" id="2bO-tP-d9K">
+                    <navigationItem key="navigationItem" title="iOS Workshop" id="2bO-tP-d9K">
                         <barButtonItem key="rightBarButtonItem" title="Scores" id="ma3-pr-qLc">
                             <connections>
                                 <segue destination="PgW-Lc-Mtr" kind="push" identifier="getScores" id="sWZ-kT-0FJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameInputText" destination="w1v-em-LOO" id="pWp-3c-fgf"/>
+                        <outlet property="playButton" destination="pAF-ZE-Us0" id="lLo-zL-BGV"/>
+                        <outlet property="threeCardsSwitchButton" destination="2Gd-N7-71C" id="3XL-MS-a40"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nk-ld-xdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
