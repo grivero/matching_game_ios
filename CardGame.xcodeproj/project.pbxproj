@@ -10,6 +10,7 @@
 		448FE2F31918B58C00401976 /* InitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448FE2F21918B58C00401976 /* InitViewController.m */; };
 		448FE2F91918BA7E00401976 /* ScoresTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448FE2F81918BA7E00401976 /* ScoresTableViewController.m */; };
 		448FE2FC191A029200401976 /* PlayingCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448FE2FB191A029200401976 /* PlayingCardGameViewController.m */; };
+		448FE2FF191A05F800401976 /* StoreBucket.m in Sources */ = {isa = PBXBuildFile; fileRef = 448FE2FE191A05F800401976 /* StoreBucket.m */; };
 		A2452888191962A800361447 /* MovesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2452887191962A800361447 /* MovesTableViewController.m */; };
 		A24C285F190619A900858590 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24C285E190619A900858590 /* Foundation.framework */; };
 		A24C2861190619A900858590 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24C2860190619A900858590 /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 		448FE2F81918BA7E00401976 /* ScoresTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoresTableViewController.m; path = ../ScoresTableViewController.m; sourceTree = "<group>"; };
 		448FE2FA191A029200401976 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
 		448FE2FB191A029200401976 /* PlayingCardGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardGameViewController.m; sourceTree = "<group>"; };
+		448FE2FD191A05F800401976 /* StoreBucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreBucket.h; sourceTree = "<group>"; };
+		448FE2FE191A05F800401976 /* StoreBucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreBucket.m; sourceTree = "<group>"; };
 		A2452886191962A800361447 /* MovesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovesTableViewController.h; sourceTree = "<group>"; };
 		A2452887191962A800361447 /* MovesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovesTableViewController.m; sourceTree = "<group>"; };
 		A24C285B190619A900858590 /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +204,8 @@
 				A24C289E19087AAA00858590 /* PlayingCardDeck.m */,
 				A24C28A01909B61E00858590 /* CardMatchingGame.h */,
 				A24C28A11909B61E00858590 /* CardMatchingGame.m */,
+				448FE2FD191A05F800401976 /* StoreBucket.h */,
+				448FE2FE191A05F800401976 /* StoreBucket.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				A24C286B190619A900858590 /* main.m in Sources */,
 				A24C28951908647E00858590 /* Card.m in Sources */,
 				448FE2F31918B58C00401976 /* InitViewController.m in Sources */,
+				448FE2FF191A05F800401976 /* StoreBucket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

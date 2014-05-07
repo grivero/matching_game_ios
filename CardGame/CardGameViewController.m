@@ -9,6 +9,7 @@
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
+#import "StoreBucket.h"
 
 @interface CardGameViewController ()
     @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -95,18 +96,18 @@
     if( self.game.actionString && ![self.actionList containsObject:self.game.actionString] )
         [self.actionList insertObject:self.game.actionString atIndex:0];
     
-    
-    
-    // interact with user
-    [self printMessages];
-    
     // To win
     if(self.game.score >= 20){
         
         self.scoreLabel.text      = [NSString stringWithFormat:@"You reach %d!", self.game.score];
         self.scoreLabel.textColor = [UIColor redColor];
-        self.titleLabel.text      = @"You win! 👍 ";
-        self.titleLabel.textColor = [UIColor redColor];
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You win"
+                                                        message:[NSString stringWithFormat: @"You reach %d!", self.game.score]
+                                                       delegate:nil
+                                               cancelButtonTitle:@"Aceptar"
+                                               otherButtonTitles:nil, nil];
+        [alert show];
         
         // disable all the cards after wining
         for(UIButton *button in self.cardButtons)
@@ -116,14 +117,16 @@
     
 }
 
+- (void) saveFromUI{
+    
+    
+}
+
 // helper method to restart the UI and the cards state
 - (void) restartUI{
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", 0];
-    self.titleLabel.text = [self getGameTitle];
-    
     self.scoreLabel.textColor = [UIColor blackColor];
-    self.titleLabel.textColor = [UIColor blackColor];
     
     self.actionList = [[NSMutableArray alloc] init];
     self.actionLabel.text = @"";
@@ -147,23 +150,6 @@
     
 }
 
-// just to interact with user
-- (void) printMessages{
-    
-    if(self.game.score < -10 && self.game.score >= -30)
-        self.titleLabel.text = @"Not so easy huh?";
-    
-    else if(self.game.score < -30)
-        self.titleLabel.text = @"You really suck";
-
-    else if(self.game.score > 5 && self.game.score <= 15 )
-        self.titleLabel.text = @"You are on track";
-    
-    else if(self.game.score > 15)
-        self.titleLabel.text = @"You are close!";
-    
-}
-
 // if the card is chosen then we show the conent, if not, just show the back of the card
 - (NSString *) titleForCard:(Card *)card{
     return card.chosen ? card.contents : @"";
@@ -172,10 +158,6 @@
 // if the card is chosen then we show the front, else we show the back
 - (UIImage *) imageForCard:(Card *)card{
     return [UIImage imageNamed: card.chosen ? @"cardFront" : @"cardBack"];
-}
-
-- (NSString *) getGameTitle{
-    return @"👿 See if you can reach 20 pts 👿";
 }
 
 

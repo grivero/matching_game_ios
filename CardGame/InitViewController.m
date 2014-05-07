@@ -20,7 +20,7 @@
 
 - (void) textInputChanged:(NSNotification *)notif{
     
-    [self.playButton setEnabled:([self.nameInputText.text length]>3)];
+    [self.playButton setEnabled:([self.nameInputText.text length]>=3)];
     
 }
 
