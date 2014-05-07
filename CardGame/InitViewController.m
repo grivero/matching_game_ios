@@ -13,7 +13,6 @@
     @property (weak, nonatomic) IBOutlet UITextField *nameInputText;
     @property (strong, nonatomic) IBOutlet UISwitch *threeCardsSwitchButton;
     @property (weak, nonatomic) IBOutlet UIButton *playButton;
-    @property (nonatomic, assign) id currentResponder;
 
 @end
 
@@ -32,10 +31,10 @@
     [super viewDidLoad];
     
     // notification center to enable/disable button depending on the # of chars entered
-   /** [[NSNotificationCenter defaultCenter] addObserver:self.playButton
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textInputChanged:)
                                                  name:UITextFieldTextDidChangeNotification
-                                               object:self.nameInputText];**/
+                                               object:self.nameInputText];
     
 }
 
