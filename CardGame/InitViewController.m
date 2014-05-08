@@ -13,7 +13,7 @@
 @interface InitViewController ()
 
     @property (weak, nonatomic) IBOutlet UITextField *nameInputText;
-    @property (strong, nonatomic) IBOutlet UISwitch *threeCardsSwitchButton;
+    @property (weak, nonatomic) IBOutlet UISwitch *threeCardsSwitchButton;
     @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 @end
@@ -43,7 +43,7 @@
     [super viewWillDisappear:animated];
     
     // remove listener
-    [[NSNotificationCenter defaultCenter] removeObserver:self.playButton
+    [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UITextFieldTextDidChangeNotification
                                                   object:self.nameInputText];
     
