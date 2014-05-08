@@ -14,4 +14,6 @@
     - (NSInteger) score;
     - (NSString *) name;
 
+    + (StoreBucket *) createStoreBucket:(NSMutableArray *)history withScore:(NSInteger)score andName:(NSString *)name;
+
 @end

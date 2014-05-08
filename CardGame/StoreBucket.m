@@ -24,4 +24,13 @@
     
 }
 
++ (StoreBucket *) createStoreBucket:(NSMutableArray *)history withScore:(NSInteger)score andName:(NSString *)name{
+ 
+    StoreBucket *newBucket = [[StoreBucket alloc] init];
+    newBucket.name = name;
+    newBucket.score = score;
+    newBucket.history = history;
+    return newBucket;
+}
+
 @end

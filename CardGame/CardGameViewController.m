@@ -27,7 +27,6 @@
     
     // set name
     _currentUserName = currentUserName;
-    
     // if we are in the window, need to update UI
     if( self.view.window )
         [self updateUI];
@@ -132,16 +131,10 @@
         self.scoreLabel.text      = [NSString stringWithFormat:@"You reach %d!", self.game.score];
         self.scoreLabel.textColor = [UIColor redColor];
         
-        /**
-         
-         guardar la data en memoria
-         ver en que posicion quede
-         talvez podria cambiar el titulo y ponerle algo como "haz quedado en 4to puesto"
-         
-         
-         **/
+        // save data
+        [self saveFromUI];
         
-        
+        // trigger alert to notify user
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You win"
                                                         message:[NSString stringWithFormat: @"You reach %d!", self.game.score]
                                                        delegate:nil
@@ -159,6 +152,22 @@
 
 - (void) saveFromUI{
     
+    // Lunch user data
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // create object to store
+    StoreBucket *newBucket = [StoreBucket createStoreBucket:self.actionList withScore:self.game.score andName:self.currentUserName];
+    
+    // get stored info
+    NSMutableDictionary *scores = [defaults objectForKey:@"scores"]; // of store_buckes
+    if(!scores)
+        scores = [[NSMutableDictionary alloc] initWithObjects:@[newBucket] forKeys:@[newBucket.name]];
+    else
+        [scores setObject:newBucket forKey:newBucket.name];
+    
+    // save
+    [defaults setObject:scores forKey:@"scores"];
+    [defaults synchronize];
     
 }
 

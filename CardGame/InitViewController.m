@@ -27,8 +27,7 @@
 }
 
 - (void) viewDidLoad{
-    
-    //self.nameInputText.delegate = self; // WHY IS THIS????
+
     [super viewDidLoad];
     
     // notification center to enable/disable button depending on the # of chars entered
