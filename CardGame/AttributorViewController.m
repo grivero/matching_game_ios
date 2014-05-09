@@ -99,7 +99,7 @@
 }
 
 
-#pragma mark - Aux functions
+#pragma mark - Aux methods
 
 - (void) preferredFontsChanged:(NSNotification *)notification{
     

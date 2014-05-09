@@ -20,22 +20,15 @@
 
 @implementation InitViewController
 
-- (void) textInputChanged:(NSNotification *)notif{
+- (void) viewWillAppear:(BOOL)animated{
     
-    [self.playButton setEnabled:([self.nameInputText.text length]>=3)];
-    
-}
-
-- (void) viewDidLoad{
-
-    [super viewDidLoad];
-    
+    [super viewWillAppear:animated];
     // notification center to enable/disable button depending on the # of chars entered
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textInputChanged:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:self.nameInputText];
-    
+
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
@@ -48,6 +41,9 @@
                                                   object:self.nameInputText];
     
 }
+
+
+#pragma mark - Aux methods
 
 - (void) saveFromUI{
     
@@ -66,6 +62,14 @@
     
 }
 
+- (void) textInputChanged:(NSNotification *)notif{
+    
+    [self.playButton setEnabled:([self.nameInputText.text length]>=3)];
+    
+}
+
+
+#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -92,6 +96,8 @@
     
 }
 
+
+#pragma mark - Delegates handlers
 
 // delegate handler
 - (BOOL) textFieldShouldReturn:(UITextField *) textField{
