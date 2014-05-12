@@ -35,6 +35,8 @@
 		A24C289C19086C4400858590 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = A24C289B19086C4400858590 /* PlayingCard.m */; };
 		A24C289F19087AAA00858590 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = A24C289E19087AAA00858590 /* PlayingCardDeck.m */; };
 		A24C28A21909B61E00858590 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = A24C28A11909B61E00858590 /* CardMatchingGame.m */; };
+		A29EFCC919216E7300AF7134 /* DropitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EFCC819216E7300AF7134 /* DropitViewController.m */; };
+		A29EFCCC192175C500AF7134 /* DropitBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EFCCB192175C500AF7134 /* DropitBehavior.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,10 @@
 		A24C289E19087AAA00858590 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
 		A24C28A01909B61E00858590 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		A24C28A11909B61E00858590 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
+		A29EFCC719216E7300AF7134 /* DropitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropitViewController.h; sourceTree = "<group>"; };
+		A29EFCC819216E7300AF7134 /* DropitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropitViewController.m; sourceTree = "<group>"; };
+		A29EFCCA192175C500AF7134 /* DropitBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropitBehavior.h; sourceTree = "<group>"; };
+		A29EFCCB192175C500AF7134 /* DropitBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropitBehavior.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +162,10 @@
 			children = (
 				A24C28961908648F00858590 /* Model */,
 				A24C2870190619A900858590 /* Main.storyboard */,
+				A29EFCCA192175C500AF7134 /* DropitBehavior.h */,
+				A29EFCCB192175C500AF7134 /* DropitBehavior.m */,
+				A29EFCC719216E7300AF7134 /* DropitViewController.h */,
+				A29EFCC819216E7300AF7134 /* DropitViewController.m */,
 				A208B57B191D97E800552F26 /* DrawingViewController.h */,
 				A208B57C191D97E800552F26 /* DrawingViewController.m */,
 				A245288C191BFD3900361447 /* AnalyzeTextViewController.h */,
@@ -335,8 +345,10 @@
 				A24C28991908668900858590 /* Deck.m in Sources */,
 				A245288B191BEE6600361447 /* AttributorViewController.m in Sources */,
 				A24C286F190619A900858590 /* CardGameAppDelegate.m in Sources */,
+				A29EFCCC192175C500AF7134 /* DropitBehavior.m in Sources */,
 				A24C2875190619A900858590 /* CardGameViewController.m in Sources */,
 				A2452888191962A800361447 /* MovesTableViewController.m in Sources */,
+				A29EFCC919216E7300AF7134 /* DropitViewController.m in Sources */,
 				448FE2FC191A029200401976 /* PlayingCardGameViewController.m in Sources */,
 				448FE2F91918BA7E00401976 /* ScoresTableViewController.m in Sources */,
 				A24C28A21909B61E00858590 /* CardMatchingGame.m in Sources */,

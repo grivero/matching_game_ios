@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xze-PO-74P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="X8C-j9-m4O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -39,7 +39,44 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1484" y="-986"/>
+            <point key="canvasLocation" x="1476" y="-644"/>
+        </scene>
+        <!--Dropit View Controller-->
+        <scene sceneID="d9m-CM-eVJ">
+            <objects>
+                <viewController id="X8C-j9-m4O" customClass="DropitViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kcD-Cr-Aw8"/>
+                        <viewControllerLayoutGuide type="bottom" id="z1D-g3-Fgl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yKo-15-WFL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yA2-dN-825">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hWg-kI-BRt" appends="YES" id="6fM-UT-LMz"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="gameView" destination="yA2-dN-825" id="gIb-DR-xvm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnY-bg-WJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hWg-kI-BRt">
+                    <connections>
+                        <action selector="tap:" destination="X8C-j9-m4O" id="T6l-rI-fNV"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1886" y="-1328"/>
         </scene>
         <!--Scores Table View Controller - High Scores-->
         <scene sceneID="1sr-x0-oMD">
