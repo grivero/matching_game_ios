@@ -8,12 +8,14 @@
 
 #import "DropitViewController.h"
 #import "DropitBehavior.h"
+#import "BezierPathView.h"
 
 @interface DropitViewController () <UIDynamicAnimatorDelegate>
-@property (weak, nonatomic) IBOutlet UIView *gameView;
-@property (strong, nonatomic) UIDynamicAnimator *animator;
-@property (strong, nonatomic) DropitBehavior *behavior;
-
+    @property (weak, nonatomic) IBOutlet BezierPathView *gameView;
+    @property (strong, nonatomic) UIDynamicAnimator *animator;
+    @property (strong, nonatomic) DropitBehavior *behavior;
+    @property (strong, nonatomic) UIAttachmentBehavior *attachment;
+    @property (strong, nonatomic) UIView *dropingView;
 @end
 
 @implementation DropitViewController
@@ -96,6 +98,7 @@
                          for(UIView *drop in dropsToRemove){
                              int x = (arc4random()%(int)self.gameView.bounds.size.width*5) - (int)self.gameView.bounds.size.width*2;
                              int y = self.gameView.bounds.size.height;
+                             // animation movement - moving center
                              drop.center = CGPointMake(x,-y);
                          }
                      }
@@ -108,6 +111,60 @@
 // tap gesture
 - (IBAction)tap:(UITapGestureRecognizer *)sender {
     [self drop];
+}
+
+// pan gesture
+- (IBAction)pan:(UIPanGestureRecognizer *)sender {
+    
+    // get location of the gesture in my game view
+    CGPoint gesturePoint = [sender locationInView:self.gameView];
+    
+    // this is pretty much generic - cycle of gestures by states
+    if(sender.state == UIGestureRecognizerStateBegan){
+        
+        [self attachDroppingViewToPoint:gesturePoint];
+        
+    }else if(sender.state == UIGestureRecognizerStateChanged){
+        
+        self.attachment.anchorPoint = gesturePoint;
+        
+    }else if(sender.state == UIGestureRecognizerStateEnded){
+        
+        [self.animator removeBehavior:self.attachment];
+        // need to hide the bar!!! test commenting this :)
+        self.gameView.path = nil;
+        
+    }
+    
+}
+
+- (void)attachDroppingViewToPoint:(CGPoint)anchorPoint{
+    
+    if(self.dropingView){
+        
+        self.attachment = [[UIAttachmentBehavior alloc] initWithItem:self.dropingView
+                                                    attachedToAnchor:anchorPoint];
+        
+        
+        // every time that will animate will call this block and keep a strong pointer to it
+        // warning with retain cycles
+        UIView *droppingView = self.dropingView;
+        __weak DropitViewController *weakSelf = self;
+        
+        self.attachment.action = ^{
+            UIBezierPath *path = [[UIBezierPath alloc] init];
+            [path moveToPoint:weakSelf.attachment.anchorPoint];
+            [path addLineToPoint:droppingView.center];
+            weakSelf.gameView.path = path;
+        };
+        
+        // one try, you can't grab it again
+        self.dropingView = nil;
+        
+        [self.animator addBehavior:self.attachment];
+        
+    }
+    
 }
 
 static const CGSize DROP_SIZE = { 40, 40 };
@@ -123,6 +180,9 @@ static const CGSize DROP_SIZE = { 40, 40 };
     
     UIView *dropView = [[UIView alloc] initWithFrame:frame];
     dropView.backgroundColor = [self randomColor];
+    
+    // the one that will be able to "grab it"
+    self.dropingView = dropView;
     
     // add view to the parent view
     [self.gameView addSubview:dropView];

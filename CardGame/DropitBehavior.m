@@ -11,11 +11,13 @@
 @interface DropitBehavior ()
     @property (strong, nonatomic) UIGravityBehavior *gravity;
     @property (strong, nonatomic) UICollisionBehavior *collider;
+    @property (strong, nonatomic) UIDynamicItemBehavior *animationOptions;
 @end
 
 @implementation DropitBehavior
 
-// lazy instiantiation
+#pragma mark - Lazy instantiations
+
 - (UICollisionBehavior *) collider{
     if(!_collider){
         _collider = [[UICollisionBehavior alloc] init];
@@ -24,7 +26,6 @@
     return _collider;
 }
 
-// lazy instiantiation
 - (UIGravityBehavior *) gravity{
     if(!_gravity){
         _gravity = [[UIGravityBehavior alloc] init];
@@ -33,11 +34,22 @@
     return _gravity;
 }
 
+- (UIDynamicItemBehavior *)animationOptions{
+    if(!_animationOptions){
+        _animationOptions = [[UIDynamicItemBehavior alloc] init];
+        _animationOptions.allowsRotation = NO;
+    }
+    return _animationOptions;
+}
+
+#pragma mark - Public API methods
+
 // add item to the behaviour environment
 - (void)addItem:(id <UIDynamicItem>)item{
     
     [self.gravity addItem:item];
     [self.collider addItem:item];
+    [self.animationOptions addItem:item];
     
 }
 
@@ -46,6 +58,7 @@
     
     [self.gravity removeItem:item];
     [self.collider removeItem:item];
+    [self.animationOptions removeItem:item];
     
 }
 
@@ -55,6 +68,7 @@
     self = [super init];
     [self addChildBehavior:self.gravity];
     [self addChildBehavior:self.collider];
+    [self addChildBehavior:self.animationOptions];
     return  self;
     
 }

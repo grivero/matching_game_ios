@@ -37,6 +37,7 @@
 		A24C28A21909B61E00858590 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = A24C28A11909B61E00858590 /* CardMatchingGame.m */; };
 		A29EFCC919216E7300AF7134 /* DropitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EFCC819216E7300AF7134 /* DropitViewController.m */; };
 		A29EFCCC192175C500AF7134 /* DropitBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EFCCB192175C500AF7134 /* DropitBehavior.m */; };
+		A29EFCCF1921897200AF7134 /* BezierPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = A29EFCCE1921897200AF7134 /* BezierPathView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		A29EFCC819216E7300AF7134 /* DropitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropitViewController.m; sourceTree = "<group>"; };
 		A29EFCCA192175C500AF7134 /* DropitBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropitBehavior.h; sourceTree = "<group>"; };
 		A29EFCCB192175C500AF7134 /* DropitBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropitBehavior.m; sourceTree = "<group>"; };
+		A29EFCCD1921897200AF7134 /* BezierPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPathView.h; sourceTree = "<group>"; };
+		A29EFCCE1921897200AF7134 /* BezierPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierPathView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 			children = (
 				A24C28961908648F00858590 /* Model */,
 				A24C2870190619A900858590 /* Main.storyboard */,
+				A29EFCCD1921897200AF7134 /* BezierPathView.h */,
+				A29EFCCE1921897200AF7134 /* BezierPathView.m */,
 				A29EFCCA192175C500AF7134 /* DropitBehavior.h */,
 				A29EFCCB192175C500AF7134 /* DropitBehavior.m */,
 				A29EFCC719216E7300AF7134 /* DropitViewController.h */,
@@ -353,6 +358,7 @@
 				448FE2F91918BA7E00401976 /* ScoresTableViewController.m in Sources */,
 				A24C28A21909B61E00858590 /* CardMatchingGame.m in Sources */,
 				A245288E191BFD3900361447 /* AnalyzeTextViewController.m in Sources */,
+				A29EFCCF1921897200AF7134 /* BezierPathView.m in Sources */,
 				A24C289F19087AAA00858590 /* PlayingCardDeck.m in Sources */,
 				A208B580191DA2D400552F26 /* PlayingCardView.m in Sources */,
 				A24C286B190619A900858590 /* main.m in Sources */,
