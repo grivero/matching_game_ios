@@ -163,30 +163,14 @@
 		A24C2864190619A900858590 /* CardGame */ = {
 			isa = PBXGroup;
 			children = (
+				A29EFCD319218F4C00AF7134 /* TableViews */,
+				A29EFCD219218E8800AF7134 /* Animations Behaviours Views */,
+				A29EFCD119218E7700AF7134 /* AnalyzeText */,
+				A29EFCD019218E5C00AF7134 /* PlayingCard */,
 				A24C28961908648F00858590 /* Model */,
 				A24C2870190619A900858590 /* Main.storyboard */,
-				A29EFCCD1921897200AF7134 /* BezierPathView.h */,
-				A29EFCCE1921897200AF7134 /* BezierPathView.m */,
-				A29EFCCA192175C500AF7134 /* DropitBehavior.h */,
-				A29EFCCB192175C500AF7134 /* DropitBehavior.m */,
-				A29EFCC719216E7300AF7134 /* DropitViewController.h */,
-				A29EFCC819216E7300AF7134 /* DropitViewController.m */,
-				A208B57B191D97E800552F26 /* DrawingViewController.h */,
-				A208B57C191D97E800552F26 /* DrawingViewController.m */,
-				A245288C191BFD3900361447 /* AnalyzeTextViewController.h */,
-				A245288D191BFD3900361447 /* AnalyzeTextViewController.m */,
-				A2452889191BEE6600361447 /* AttributorViewController.h */,
-				A245288A191BEE6600361447 /* AttributorViewController.m */,
 				448FE2F11918B58C00401976 /* InitViewController.h */,
 				448FE2F21918B58C00401976 /* InitViewController.m */,
-				448FE2F71918BA7E00401976 /* ScoresTableViewController.h */,
-				448FE2F81918BA7E00401976 /* ScoresTableViewController.m */,
-				A2452886191962A800361447 /* MovesTableViewController.h */,
-				A2452887191962A800361447 /* MovesTableViewController.m */,
-				A24C2873190619A900858590 /* CardGameViewController.h */,
-				A24C2874190619A900858590 /* CardGameViewController.m */,
-				448FE2FA191A029200401976 /* PlayingCardGameViewController.h */,
-				448FE2FB191A029200401976 /* PlayingCardGameViewController.m */,
 				A24C2876190619A900858590 /* Images.xcassets */,
 				A24C2865190619A900858590 /* Supporting Files */,
 			);
@@ -243,6 +227,54 @@
 				448FE2FE191A05F800401976 /* StoreBucket.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		A29EFCD019218E5C00AF7134 /* PlayingCard */ = {
+			isa = PBXGroup;
+			children = (
+				A24C2873190619A900858590 /* CardGameViewController.h */,
+				A24C2874190619A900858590 /* CardGameViewController.m */,
+				448FE2FA191A029200401976 /* PlayingCardGameViewController.h */,
+				448FE2FB191A029200401976 /* PlayingCardGameViewController.m */,
+			);
+			name = PlayingCard;
+			sourceTree = "<group>";
+		};
+		A29EFCD119218E7700AF7134 /* AnalyzeText */ = {
+			isa = PBXGroup;
+			children = (
+				A245288C191BFD3900361447 /* AnalyzeTextViewController.h */,
+				A245288D191BFD3900361447 /* AnalyzeTextViewController.m */,
+				A2452889191BEE6600361447 /* AttributorViewController.h */,
+				A245288A191BEE6600361447 /* AttributorViewController.m */,
+			);
+			name = AnalyzeText;
+			sourceTree = "<group>";
+		};
+		A29EFCD219218E8800AF7134 /* Animations Behaviours Views */ = {
+			isa = PBXGroup;
+			children = (
+				A208B57B191D97E800552F26 /* DrawingViewController.h */,
+				A208B57C191D97E800552F26 /* DrawingViewController.m */,
+				A29EFCCD1921897200AF7134 /* BezierPathView.h */,
+				A29EFCCE1921897200AF7134 /* BezierPathView.m */,
+				A29EFCCA192175C500AF7134 /* DropitBehavior.h */,
+				A29EFCCB192175C500AF7134 /* DropitBehavior.m */,
+				A29EFCC719216E7300AF7134 /* DropitViewController.h */,
+				A29EFCC819216E7300AF7134 /* DropitViewController.m */,
+			);
+			name = "Animations Behaviours Views";
+			sourceTree = "<group>";
+		};
+		A29EFCD319218F4C00AF7134 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				448FE2F71918BA7E00401976 /* ScoresTableViewController.h */,
+				448FE2F81918BA7E00401976 /* ScoresTableViewController.m */,
+				A2452886191962A800361447 /* MovesTableViewController.h */,
+				A2452887191962A800361447 /* MovesTableViewController.m */,
+			);
+			name = TableViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
