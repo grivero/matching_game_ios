@@ -133,7 +133,7 @@
         [self.actionList insertObject:self.game.actionString atIndex:0];
     
     // To win
-    if(self.game.score >= 20){
+    if(self.game.score >= 4){
         
         self.scoreLabel.text      = [NSString stringWithFormat:@"You reach %d!", self.game.score];
         self.scoreLabel.textColor = [UIColor redColor];
@@ -151,7 +151,7 @@
             button.enabled = false;
         
         // save data
-        //[self saveFromUI];
+        [self saveFromUI];
         
     }
     
@@ -164,18 +164,29 @@
     // Lunch user data
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    // create object to store
+    // create object to store, then encode it
     StoreBucket *newBucket = [StoreBucket createStoreBucket:self.actionList withScore:self.game.score andName:self.currentUserName];
+    NSData* newBucketData = [NSKeyedArchiver archivedDataWithRootObject:newBucket];
     
     // get stored info
-    NSMutableDictionary *scores = [defaults objectForKey:@"scores"]; // of store_buckes
-    if(!scores)
-        scores = [[NSMutableDictionary alloc] initWithObjects:@[newBucket] forKeys:@[newBucket.name]];
-    else
-        [scores setObject:newBucket forKey:newBucket.name];
+    NSArray *scoresData = [defaults objectForKey:@"scores"]; // of store_buckes
+
+// decode stored info
+//    NSArray *scores = [NSKeyedUnarchiver unarchiveObjectWithData:scoresData];
     
-    // save
-    [defaults setObject:scores forKey:@"scores"];
+    // if null then init
+    if(!scoresData)
+        scoresData = [[NSArray alloc] init];
+    
+    // create mutable array to manage the info
+    NSMutableArray *aux = [[NSMutableArray alloc] initWithArray:scoresData];
+    [aux addObject:newBucketData];
+    
+    // back to NSArray in order to store it in standardUserDefaults
+    scoresData = [[NSArray alloc] initWithArray:aux];
+    
+    // put the data and synch
+    [defaults setObject:scoresData forKey:@"scores"];
     [defaults synchronize];
     
 }
